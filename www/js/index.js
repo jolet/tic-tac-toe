@@ -34,10 +34,25 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        console.log("navigator.geolocation works well");
-
         var watchID = navigator.geolocation.watchPosition(geo.onSuccess, geo.onError, { timeout: 30000 });
-        console.log(watchID);
+        window.addEventListener("batterystatus", app.onBatteryStatus, false);
+        document.addEventListener("online", app.onOnline, false);
+        document.addEventListener("offline", app.onOffline, false);
+    },
+
+    onOnline: function() {
+        $("#connectionStatus").html("ConnectionStatus: " + navigator.connection.type);
+    },
+
+    onOffline: function() {
+        $("#connectionStatus").html("ConnectionStatus: " + navigator.connection.type);
+    },
+
+    onBatteryStatus: function (status) {
+        var batteryStatus = "Battery Level: " + status.level + " isPlugged: " + status.isPlugged;
+        $("#batteryStatus").html(batteryStatus);
+        console.log(batteryStatus)
+
     },
 
     changeStatusBar: function() {
@@ -79,7 +94,7 @@ var geo = {
     //
     onError: function (error) {
       var element = document.getElementById('geolocation');
-        element.innerHTML = 'code: '    + error.code    + '\n' + 'message: ' + error.message + '\n';
+        element.innerHTML = 'GPS error code: '    + error.code    + '\n' + 'message: ' + error.message + '\n';
     }
 
     // Options: throw an error if no update is received every 30 seconds.
@@ -181,4 +196,9 @@ var TicTacToe = {
     $(document).ready(function() {
         // Start a game!
         TicTacToe.restartGame();
+        $("h1").click(function(){
+            var status_toggle = $("#status_div").css('display') == 'none' ? 'block' : 'none';
+            $("#status_div").css('display', status_toggle);
+        })
+
     });
