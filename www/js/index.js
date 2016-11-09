@@ -100,11 +100,11 @@ var TicTacToe = {
 
     // Display who won and options for new games /
     endGame: function() {
-
+      app.vibrate(2000);
       if (this.win == "Cat") {
           $("#menu").html("Cats Game.");
       } else {
-          $("#menu").html(this.win + " wins!");
+          $("#menu").html("Player " + this.win + " wins!");
       }
       $("#menu").append("<div id='play_again'>Play Again</div>");
 

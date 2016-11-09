@@ -59,7 +59,7 @@ body {
 
     position:fixed;             /* position in the center of the screen */
     width: 100%;
-    top:0px;
+    top:10px;
     height:10%;                   /* text area height */
     text-align:center;
 
