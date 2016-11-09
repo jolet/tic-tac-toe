@@ -7,15 +7,15 @@ var TicTacToe = {
     // Clears and starts a new game with a new board /
     restartGame: function() {
       // Draw the board
-      var board_table = '<table cellpadding="0px" cellspacing="0px" align="center" border="0px" class="board"><tr><td id="ttt0"> </td><td id="ttt1"> </td><td id="ttt2"> </td></tr><tr><td id="ttt3"> </td><td id="ttt4"> </td><td id="ttt5"> </td></tr><tr><td id="ttt6"> </td><td id="ttt7"> </td><td id="ttt8"> </td></tr></table>';
-      $("#board").html(board_table);
+      var board_table = '<table id="le_table" cellpadding="0px" cellspacing="0px" align="center" border="0px" class="board"><tr><td id="ttt0"> </td><td id="ttt1"> </td><td id="ttt2"> </td></tr><tr><td id="ttt3"> </td><td id="ttt4"> </td><td id="ttt5"> </td></tr><tr><td id="ttt6"> </td><td id="ttt7"> </td><td id="ttt8"> </td></tr></table>';
+      $("#board_div").html(board_table);
       $("#menu").hide();
 
       // clear the board
       this.board = ["", "", "", "", "", "", "", "", "", ""];
 
       // Add on-click events to each of the boxes of the board
-      $("#board td").click(function(e) {
+      $("#board_div td").click(function(e) {
           TicTacToe.move( e.target.id );
          });
 
