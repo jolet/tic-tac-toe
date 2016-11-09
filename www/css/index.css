@@ -111,3 +111,11 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+#status_div {
+  height: 10%;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  margin: auto;
+}

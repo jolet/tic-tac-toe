@@ -40,6 +40,10 @@ var app = {
         console.log(watchID);
     },
 
+    changeStatusBar: function() {
+      StatusBar.backgroundColorByHexString("#4B946A");
+    },
+
     vibrate: function() {
       navigator.notification.vibrate( 1000 );
     },
@@ -108,6 +112,7 @@ var TicTacToe = {
 
     // Handles clicks spaces on the board /
     move: function(id) {
+      app.changeStatusBar();
       var space = $("#" + id);  // Board space table element
       var num = id.replace("ttt", ""); // # representing the space on the board
 
