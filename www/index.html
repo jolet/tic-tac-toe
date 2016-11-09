@@ -39,21 +39,27 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/tic-tac-toe.css" />
     <title>Hello World</title>
 </head>
 
 <body>
-    <div class="app">
-        <h1>PhoneGap Tic Tac Toe</h1>
+    <div class="app">   
+        <h1>PhoneGap Tic Tac Toe</h1> 
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
-          <button onclick="app.vibrate();">
-            Vibrate Test <small>Enabled</small>
-          </button>
-            <p><a href="tic/tic-tac-toe.html">Start Tic Tac Toe</a></p>
+<!--             <p><a href="tic/tic-tac-toe.html">Start Tic Tac Toe</a></p> -->
         </div>
     </div>
+
+      <div id="container" align="center">
+        <div id="menu"></div>
+        <div id="board_div"></div>
+      </div>
+
+
+    <script src="js/jquery_1.3.2.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">

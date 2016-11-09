@@ -1,10 +1,10 @@
-/ Main Game Handling class /
+/* Main Game Handling class */
 var TicTacToe = {
     turn: "O",  // Keeps a record of who's turn it is
     board: ["", "", "", "", "", "", "", "", "", ""],  // Keeps a record of the TicTacToe Board
     win: false, // records who won if the game is over
 
-    // Clears and starts a new game with a new board /
+    // Clears and start*s a new game with a new board /
     restartGame: function() {
       // Draw the board
       var board_table = '<table id="le_table" cellpadding="0px" cellspacing="0px" align="center" border="0px" class="board"><tr><td id="ttt0"> </td><td id="ttt1"> </td><td id="ttt2"> </td></tr><tr><td id="ttt3"> </td><td id="ttt4"> </td><td id="ttt5"> </td></tr><tr><td id="ttt6"> </td><td id="ttt7"> </td><td id="ttt8"> </td></tr></table>';
@@ -89,7 +89,6 @@ var TicTacToe = {
     };
 
     $(document).ready(function() {
-
         // Start a game!
         TicTacToe.restartGame();
     });
