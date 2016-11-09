@@ -35,6 +35,11 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
+
+    vibrate: function() {
+      navigator.notification.vibrate( 1000 );
+    },
+  
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
