@@ -34,6 +34,10 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        console.log("navigator.geolocation works well");
+
+        var watchID = navigator.geolocation.watchPosition(geo.onSuccess, geo.onError, { timeout: 30000 });
+        console.log(watchID);
     },
 
     vibrate: function() {
@@ -52,6 +56,32 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+var geo = {
+      // onSuccess Callback
+    //   This method accepts a `Position` object, which contains
+    //   the current GPS coordinates
+    //
+    onSuccess: function (position) {
+        var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
+                            'Longitude: ' + position.coords.longitude     + '<br />' +
+                            '<hr />'      + element.innerHTML;
+
+        console.log(element.innerHTML)
+    },
+
+    // onError Callback receives a PositionError object
+    //
+    onError: function (error) {
+      var element = document.getElementById('geolocation');
+        element.innerHTML = 'code: '    + error.code    + '\n' + 'message: ' + error.message + '\n';
+    }
+
+    // Options: throw an error if no update is received every 30 seconds.
+    //
+    //var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 });
+}
 
 /* Main Game Handling class */
 var TicTacToe = {
