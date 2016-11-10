@@ -16,50 +16,50 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var app = {
+ var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+      this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+      document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        var watchID = navigator.geolocation.watchPosition(geo.onSuccess, geo.onError, { timeout: 30000 });
-        window.addEventListener("batterystatus", app.onBatteryStatus, false);
-        document.addEventListener("online", app.onOnline, false);
-        document.addEventListener("offline", app.onOffline, false);
-        app.changeStatusBar();
+      app.receivedEvent('deviceready');
+      var watchID = navigator.geolocation.watchPosition(geo.onSuccess, geo.onError, { timeout: 30000 });
+      window.addEventListener("batterystatus", app.onBatteryStatus, false);
+      document.addEventListener("online", app.onOnline, false);
+      document.addEventListener("offline", app.onOffline, false);
+      app.changeStatusBar();
 
     },
 
     onOnline: function() {
-        $("#connectionStatus").html("ConnectionStatus: " + navigator.connection.type);
+      $("#connectionStatus").html("ConnectionStatus: " + navigator.connection.type);
     },
 
     onOffline: function() {
-        $("#connectionStatus").html("ConnectionStatus: " + navigator.connection.type);
+      $("#connectionStatus").html("ConnectionStatus: " + navigator.connection.type);
     },
 
     onBatteryStatus: function (status) {
-        var batteryStatus = "Battery Level: " + status.level + " isPlugged: " + status.isPlugged;
-        $("#batteryStatus").html(batteryStatus);
-        console.log(batteryStatus)
+      var batteryStatus = "Battery Level: " + status.level + " isPlugged: " + status.isPlugged;
+      $("#batteryStatus").html(batteryStatus);
+      console.log(batteryStatus)
 
     },
 
     playMedia: function() {
-        var myMedia = new Media("/res/success.mp3");
-        myMedia.play({ numberOfLoops: 2 })
+      var myMedia = new Media("/res/success.mp3");
+      myMedia.play({ numberOfLoops: 2 })
     },
 
     changeStatusBar: function() {
@@ -69,48 +69,47 @@ var app = {
     vibrate: function() {
       navigator.notification.vibrate( 1000 );
     },
-  
+
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+      var parentElement = document.getElementById(id);
+      var listeningElement = parentElement.querySelector('.listening');
+      var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+      listeningElement.setAttribute('style', 'display:none;');
+      receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+      console.log('Received Event: ' + id);
     }
-};
+  };
 
-var geo = {
+  var geo = {
       // onSuccess Callback
     //   This method accepts a `Position` object, which contains
     //   the current GPS coordinates
     //
     onSuccess: function (position) {
-        var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-                            'Longitude: ' + position.coords.longitude     + '<br />' +
-                            '<hr />'      + element.innerHTML;
+      var element = document.getElementById('geolocation');
+      element.innerHTML = 'Latitude: '  + position.coords.latitude
+      + '\t Longitude: ' + position.coords.longitude;
 
-        console.log(element.innerHTML)
+      console.log(element.innerHTML)
     },
 
     // onError Callback receives a PositionError object
     //
     onError: function (error) {
       var element = document.getElementById('geolocation');
-        element.innerHTML = 'GPS error code: '    + error.code    + '\n' + 'message: ' + error.message + '\n';
+      element.innerHTML = 'GPS error code: '    + error.code    + '\n' + 'message: ' + error.message + '\n';
     }
 
     // Options: throw an error if no update is received every 30 seconds.
     //
     //var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 });
-}
+  }
 
-/* Main Game Handling class */
-var TicTacToe = {
+  /* Main Game Handling class */
+  var TicTacToe = {
     playerOWins: 0,
     playerXWins: 0,
     turn: "O",  // Keeps a record of who's turn it is
@@ -129,8 +128,8 @@ var TicTacToe = {
 
       // Add on-click events to each of the boxes of the board
       $("#board_div td").click(function(e) {
-          TicTacToe.move( e.target.id );
-         });
+        TicTacToe.move( e.target.id );
+      });
 
     },
 
@@ -152,7 +151,7 @@ var TicTacToe = {
       this.turn = (this.turn == "O") ? "X" : "O";
       this.win = this.check4Win();
       if (this.win) {
-          this.endGame();
+        this.endGame();
       }
     },
 
@@ -160,38 +159,52 @@ var TicTacToe = {
     endGame: function() {
       var resultMessage = '';
       if (this.win == "Cat") {
-          app.vibrate(2000);
-          resultMessage = "Result: Tie.";
+        app.vibrate(2000);
+        resultMessage = "Result: Tie.";
       } else { 
-          app.playMedia(); 
-          this.win == 'X' ? this.playerXWins++ : this.playerOWins++;
-          $("#deviceready .event.received").html("[X vs 0] = " + this.playerXWins + " : " + this.playerOWins);
-          resultMessage = "Player " + this.win + " wins!";
+        app.playMedia(); 
+        this.win == 'X' ? this.playerXWins++ : this.playerOWins++;
+        $("#deviceready .event.received").html("[X vs 0] = " + this.playerXWins + " : " + this.playerOWins);
+        resultMessage = "Player " + this.win + " wins!";
       }
 
       if(navigator.platform != "Win32") {
-        navigator.notification.alert(
-            'You are the winner!',  // message
-            alertDismissed,         // callback
+        navigator.notification.confirm(
+            resultMessage,  // message
+            onConfirm,         // callback
             'Game Over',            // title
-            'Play Again?'           // buttonName
-        );
+            ['Play Again?', 'Exit']           // buttonName
+            );
       } else {
         $("#menu").html(resultMessage);
         $("#menu").append("<div id='play_again'>Play Again</div>");
         $("#menu").show();
         // Button for playing again.
-        $("#play_again").click(function () { alertDismissed()  });
+        $("#play_again").click(function () { onConfirm(1)  });
       }
-      function alertDismissed() {TicTacToe.restartGame(); }
+      function onConfirm(confirmButtonIndex) {
+        if(confirmButtonIndex == 1){
+         TicTacToe.restartGame(); 
+       } else {
+        if (navigator.app) {
+          navigator.app.exitApp();
+        }
+        else if (navigator.device) {
+          navigator.device.exitApp();
+        } else {
+          window.close();
+        }
+      }
 
-      
+    }
 
 
-      
-      this.win = false;
 
-    },
+
+
+    this.win = false;
+
+  },
 
     // If any of these patters of board spaces have all X's or all O's somebody won!
     wins: [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [6,4,2]],
@@ -202,8 +215,8 @@ var TicTacToe = {
       // Loop through all possible winning combinations
       for (k in this.wins){
         var pattern = this.wins[k];
-            var p = this.board[pattern[0]] + this.board[pattern[1]] + this.board[pattern[2]];
-            if (p == "XXX") {
+        var p = this.board[pattern[0]] + this.board[pattern[1]] + this.board[pattern[2]];
+        if (p == "XXX") {
               return "X";  // X Won!
             } else if (p == "OOO") {
               return "O";  // O Won!
@@ -218,19 +231,19 @@ var TicTacToe = {
           if (cnt == 9) {
             return "Cat";  // Cat's game!
           }
-      }
-    };
+        }
+      };
 
-    $(document).ready(function() {
+      $(document).ready(function() {
         // Start a game!
         TicTacToe.restartGame();
         $("h1").click(function(){
-            var status_toggle = $("#status_div").css('display') == 'none' ? 'block' : 'none';
-            $("#status_div").css('display', status_toggle);
+          var status_toggle = $("#status_div").css('display') == 'none' ? 'block' : 'none';
+          $("#status_div").css('display', status_toggle);
         })
 
         $("#deviceready").click(function(){
-            StatusBar.isVisible ? StatusBar.hide() : StatusBar.show();
+          StatusBar.isVisible ? StatusBar.hide() : StatusBar.show();
         })
 
-    });
+      });
