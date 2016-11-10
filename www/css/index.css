@@ -121,3 +121,8 @@ h1 {
   bottom: 0px;
   margin: auto;
 }
+
+#status_div.p {
+    margin: 0px;
+    padding: 0px;
+}
