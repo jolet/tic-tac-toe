@@ -23,25 +23,24 @@ Since the purpose of app is to test available system resources, app will ask for
     ### Security
         - change your audio settings - (cordova Media plugin) - for playing audio effect after winning. If effect is not found, it will be downloaded from https://www.freesound.org/data/previews/162/162473_311243-lq.mp3 (I couldn't make local one in /res/success.mp3 to play)
         - full network access - (cordova network plugin) - for showing network state change on screen
-        - modify your contacts - (cordova contacts plugin) - not sure why is it asked, probably because it is mentioned in config.xml file. Not implemented/used in this app.
         
     ### Privacy
+        - approximate location (network based) - (cordova geolocation) - for showing location coordinates on screen
         - precise location (GPS and network based) - (cordova geolocation) - for showing location coordinates on screen
-        - read your contacts - (cordova contacts plugin) - not sure why is it asked, probably because it is mentioned in config.xml file. Not implemented/used in this app.
-        - read phone status and identity
-        - approximate location (network based)
-        
+
     ### Other
         - control vibration - for vibrate effect when tic tac toe game ends as tie
+        - view network connections - 
+        - record audio, modify or delete the contents of your USB storage, read the contents of your USB storage - (cordova Media plugin) - not used in this app, 
         
-
 ## Notes
     - application was tested in android and windows x64 platforms only. Other platforms were not tested. 
 
 ## Credits
     - jQuery Tic Tac Toe code from ThingsILearned By Dave Fowler http://thingsilearned.com/2009/06/02/tictactoe-in-jquery/
     - Phonegap hello world template from https://github.com/phonegap/phonegap-template-hello-world for quick start
-    - Phonegap CLI for making everything available from command line http://github.com/phonegap/phonegap-cli
+    - Phonegap CLI for making everything available from command line http://docs.phonegap.com/references/phonegap-cli/
+    - cool cordova page with nice docs https://cordova.apache.org/docs/en/latest/config_ref/index.html
     - cool professor for not making me reinvent the wheel and letting me integrate instead
 
 ## Todo
