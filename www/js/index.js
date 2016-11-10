@@ -38,6 +38,8 @@ var app = {
         window.addEventListener("batterystatus", app.onBatteryStatus, false);
         document.addEventListener("online", app.onOnline, false);
         document.addEventListener("offline", app.onOffline, false);
+        app.changeStatusBar();
+
     },
 
     onOnline: function() {
@@ -120,6 +122,7 @@ var TicTacToe = {
 
       // Add on-click events to each of the boxes of the board
       $("#board_div td").click(function(e) {
+        StatusBar.isVisible ? StatusBar.hide() : StatusBar.show();
           TicTacToe.move( e.target.id );
          });
 
@@ -127,7 +130,6 @@ var TicTacToe = {
 
     // Handles clicks spaces on the board /
     move: function(id) {
-      app.changeStatusBar();
       var space = $("#" + id);  // Board space table element
       var num = id.replace("ttt", ""); // # representing the space on the board
 

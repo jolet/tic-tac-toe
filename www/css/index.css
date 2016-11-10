@@ -115,14 +115,14 @@ h1 {
 #status_div {
     display: none;  
     overflow:visible;
-  height: 10%;
+  height: 15%;
   width: 100%;
   position: fixed;
   bottom: 0px;
   margin: auto;
 }
 
-#status_div.p {
+#status_div p {
     margin: 0px;
     padding: 0px;
 }
