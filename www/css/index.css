@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-* {
+ * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
@@ -34,7 +34,7 @@ body {
         left bottom,
         color-stop(0, #A7A7A7),
         color-stop(0.51, #E4E4E4)
-    );
+        );
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
@@ -47,25 +47,12 @@ body {
 
 /* Portrait layout (default) */
 .app {
-        /* 170px x 200px */
-/*    background:url(../img/logo.png) no-repeat center top; 
-
-        padding:180px 0px 0px 0px;   
-        margin:-115px 0px 0px -112px;  */  
-        /* image height is 200px (bottom 20px are overlapped with text) */
-
-    /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
-
     position:fixed;             /* position in the center of the screen */
     width: 100%;
     top:10px;
     height:10%;                   /* text area height */
     text-align:center;
-
 }
-
-
 
 h1 {
     font-size:24px;
@@ -100,13 +87,13 @@ h1 {
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
+
 @-webkit-keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
+
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
@@ -115,11 +102,11 @@ h1 {
 #status_div {
     display: none;  
     overflow:visible;
-  height: 15%;
-  width: 100%;
-  position: fixed;
-  bottom: 0px;
-  margin: auto;
+    height: 15%;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    margin: auto;
 }
 
 #status_div p {

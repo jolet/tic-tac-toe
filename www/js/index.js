@@ -28,12 +28,14 @@
     bindEvents: function() {
       document.addEventListener('deviceready', this.onDeviceReady, false);
     },
+
+    // stores fetched sound effect
+    mediaSound: null,
+
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    mediaSound: null,
-
     onDeviceReady: function() {
       app.receivedEvent('deviceready');
       var watchID = navigator.geolocation.watchPosition(geo.onSuccess, geo.onError, { timeout: 30000 });
@@ -57,12 +59,12 @@
       var batteryStatus = "Battery Level: " + status.level + " isPlugged: " + status.isPlugged;
       $("#batteryStatus").html(batteryStatus);
       console.log(batteryStatus)
-
     },
 
     getSuccesMediaSound: function(media) {
       var resourceUrl = '/res/success.mp3'
       if(navigator.platform != "Win32") {
+        // fix for android not finding local mp3 after app install
         resourceUrl = "https://www.freesound.org/data/previews/162/162473_311243-lq.mp3"
       } else {
         resourceUrl = "/res/success.mp3"
@@ -83,11 +85,11 @@
     },
 
     showDialog: function(title, message) {
-            navigator.notification.alert(
-            message,  // message
-            undefined,         // callback
-            title,            // title
-            undefined           // buttonName
+      navigator.notification.alert(
+            message,   // message
+            undefined, // callback
+            title,     // title
+            undefined  // buttonName
             );
     },
 
@@ -117,22 +119,21 @@
       console.log(element.innerHTML)
     },
 
-    // onError Callback receives a PositionError object
-    //
     onError: function (error) {
       var element = document.getElementById('geolocation');
       element.innerHTML = 'GPS error code: '    + error.code    + '\n' + 'message: ' + error.message + '\n';
     }
-
-    // Options: throw an error if no update is received every 30 seconds.
-    //
-    //var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 });
   }
 
-  /* Main Game Handling class */
-  var TicTacToe = {
-    playerOWins: 0,
-    playerXWins: 0,
+  /* ==================================================================
+    jQuery Tic Tac Toe code from ThingsILearned By Dave Fowler http://thingsilearned.com/2009/06/02/tictactoe-in-jquery/ 
+    ===================================================================
+    */
+
+    /* Main Game Handling class */
+    var TicTacToe = {
+      playerOWins: 0,
+      playerXWins: 0,
     turn: "O",  // Keeps a record of who's turn it is
     board: ["", "", "", "", "", "", "", "", "", ""],  // Keeps a record of the TicTacToe Board
     win: false, // records who won if the game is over
@@ -193,9 +194,9 @@
       if(navigator.platform != "Win32") {
         navigator.notification.confirm(
             resultMessage,  // message
-            onConfirm,         // callback
-            'Game Over',            // title
-            ['Play Again?', 'Exit']           // buttonName
+            onConfirm,      // callback
+            'Game Over',    // title
+            ['Play Again?', 'Exit'] // buttonName
             );
       } else {
         $("#menu").html(resultMessage);
@@ -219,13 +220,7 @@
       }
 
     }
-
-
-
-
-
     this.win = false;
-
   },
 
     // If any of these patters of board spaces have all X's or all O's somebody won!
