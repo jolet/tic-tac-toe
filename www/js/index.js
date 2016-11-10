@@ -57,6 +57,11 @@ var app = {
 
     },
 
+    playMedia: function() {
+        var myMedia = new Media("/res/success.mp3");
+        myMedia.play({ numberOfLoops: 2 })
+    },
+
     changeStatusBar: function() {
       StatusBar.backgroundColorByHexString("#4B946A");
     },
@@ -106,6 +111,8 @@ var geo = {
 
 /* Main Game Handling class */
 var TicTacToe = {
+    playerOWins: 0,
+    playerXWins: 0,
     turn: "O",  // Keeps a record of who's turn it is
     board: ["", "", "", "", "", "", "", "", "", ""],  // Keeps a record of the TicTacToe Board
     win: false, // records who won if the game is over
@@ -122,7 +129,6 @@ var TicTacToe = {
 
       // Add on-click events to each of the boxes of the board
       $("#board_div td").click(function(e) {
-        StatusBar.isVisible ? StatusBar.hide() : StatusBar.show();
           TicTacToe.move( e.target.id );
          });
 
@@ -152,17 +158,37 @@ var TicTacToe = {
 
     // Display who won and options for new games /
     endGame: function() {
-      app.vibrate(2000);
+      var resultMessage = '';
       if (this.win == "Cat") {
-          $("#menu").html("Cats Game.");
-      } else {
-          $("#menu").html("Player " + this.win + " wins!");
+          app.vibrate(2000);
+          resultMessage = "Result: Tie.";
+      } else { 
+          app.playMedia(); 
+          this.win == 'X' ? this.playerXWins++ : this.playerOWins++;
+          $("#deviceready .event.received").html("[X vs 0] = " + this.playerXWins + " : " + this.playerOWins);
+          resultMessage = "Player " + this.win + " wins!";
       }
-      $("#menu").append("<div id='play_again'>Play Again</div>");
 
-      // Button for playing again.
-      $("#play_again").click(function () { TicTacToe.restartGame();  });
-      $("#menu").show();
+      if(navigator.platform != "Win32") {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Play Again?'           // buttonName
+        );
+      } else {
+        $("#menu").html(resultMessage);
+        $("#menu").append("<div id='play_again'>Play Again</div>");
+        $("#menu").show();
+        // Button for playing again.
+        $("#play_again").click(function () { alertDismissed()  });
+      }
+      function alertDismissed() {TicTacToe.restartGame(); }
+
+      
+
+
+      
       this.win = false;
 
     },
@@ -201,6 +227,10 @@ var TicTacToe = {
         $("h1").click(function(){
             var status_toggle = $("#status_div").css('display') == 'none' ? 'block' : 'none';
             $("#status_div").css('display', status_toggle);
+        })
+
+        $("#deviceready").click(function(){
+            StatusBar.isVisible ? StatusBar.hide() : StatusBar.show();
         })
 
     });
