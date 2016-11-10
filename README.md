@@ -22,7 +22,7 @@ Since the purpose of app is to test available system resources, app will ask for
 
     ### Security
         - change your audio settings - (cordova Media plugin) - for playing audio effect after winning. If effect is not found, it will be downloaded from https://www.freesound.org/data/previews/162/162473_311243-lq.mp3 (I couldn't make local one in /res/success.mp3 to play)
-        - full network access - (cordova network plugin) - for showing network state change on screen
+        - full network access - (cordova network/media plugin) - for showing network state change on screen
         
     ### Privacy
         - approximate location (network based) - (cordova geolocation) - for showing location coordinates on screen
@@ -30,7 +30,7 @@ Since the purpose of app is to test available system resources, app will ask for
 
     ### Other
         - control vibration - for vibrate effect when tic tac toe game ends as tie
-        - view network connections - 
+        - view network connections - (cordova network plugin) - for showing network state change on screen
         - record audio, modify or delete the contents of your USB storage, read the contents of your USB storage - (cordova Media plugin) - not used in this app, 
         
 ## Notes
@@ -40,6 +40,7 @@ Since the purpose of app is to test available system resources, app will ask for
     - jQuery Tic Tac Toe code from ThingsILearned By Dave Fowler http://thingsilearned.com/2009/06/02/tictactoe-in-jquery/
     - Phonegap hello world template from https://github.com/phonegap/phonegap-template-hello-world for quick start
     - Phonegap CLI for making everything available from command line http://docs.phonegap.com/references/phonegap-cli/
+    - Phonegap Build for free builds https://build.phonegap.com
     - cool cordova page with nice docs https://cordova.apache.org/docs/en/latest/config_ref/index.html
     - cool professor for not making me reinvent the wheel and letting me integrate instead
 
