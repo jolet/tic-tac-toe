@@ -64,7 +64,13 @@
       } else {
         //resourceUrl = "/res/success.mp3"
       } 
-      var myMediaUrl = new Media(resourceUrl)
+      var myMediaUrl = new Media(resourceUrl, function(e){
+        console.log("on success",e)
+        app.showDialog("success", "media fetch success");
+      }, function(e) {
+        console.log("on error",e)
+        app.showDialog("error " + e, "media fetch error");
+      })
       myMediaUrl.play();
     },
 
@@ -78,6 +84,15 @@
 
     openInAppBrowser: function() {
       cordova.InAppBrowser.open('https://build.phonegap.com/apps/2346289/builds', '_self  ', 'location=yes')
+    },
+
+    showDialog: function(title, message) {
+            navigator.notification.alert(
+            message,  // message
+            undefined,         // callback
+            title,            // title
+            undefined           // buttonName
+            );
     },
 
     // Update DOM on a Received Event
