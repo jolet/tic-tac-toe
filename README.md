@@ -31,7 +31,10 @@ Since the purpose of app is to test available system resources, app will ask for
     ### Other
         - control vibration - for vibrate effect when tic tac toe game ends as tie
         
-        
+
+## Notes
+    - application was tested in android and windows x64 platforms only. Other platforms were not tested. 
+
 ## Credits
     - jQuery Tic Tac Toe code from ThingsILearned By Dave Fowler http://thingsilearned.com/2009/06/02/tictactoe-in-jquery/
     - Phonegap hello world template from https://github.com/phonegap/phonegap-template-hello-world for quick start
