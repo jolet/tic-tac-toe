@@ -7,8 +7,9 @@
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team
     </author>
+    <!-- https://github.com/jessemonroy650/top-phonegap-mistakes/blob/master/new-to-Phonegap.md -->
     <!-- <content src="tic-tac-toe.html" /> -->
-    <content src="index.html" />s
+    <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />

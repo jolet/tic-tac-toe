@@ -76,6 +76,10 @@
       navigator.notification.vibrate( 1000 );
     },
 
+    openInAppBrowser: function() {
+      cordova.InAppBrowser.open('https://build.phonegap.com/apps/2346289/builds', '_self  ', 'location=yes')
+    },
+
     // Update DOM on a Received Event
     receivedEvent: function(id) {
       var parentElement = document.getElementById(id);
@@ -246,6 +250,10 @@
         $("h1").click(function(){
           var status_toggle = $("#status_div").css('display') == 'none' ? 'block' : 'none';
           $("#status_div").css('display', status_toggle);
+        })
+
+        $("#status_div").click(function(){
+          app.openInAppBrowser();
         })
 
         $("#deviceready").click(function(){
