@@ -58,10 +58,14 @@
     },
 
     playMedia: function() {
-      var myMedia = new Media("/res/success.mp3");
-      //var myMediaUrl = new Media("https://www.freesound.org/data/previews/162/162473_311243-lq.mp3")
-      myMedia.play();
-      //myMediaUrl.play();
+      var resourceUrl = ''
+      if(navigator.platform != "Win32") {
+        resourceUrl = "https://www.freesound.org/data/previews/162/162473_311243-lq.mp3"
+      } else {
+        resourceUrl = "/res/success.mp3"
+      } 
+      var myMediaUrl = new Media(resourceUrl)
+      myMediaUrl.play();
     },
 
     changeStatusBar: function() {
