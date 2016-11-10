@@ -5,6 +5,7 @@ Developed as uni assignment for "Mobile Application Development" class.
 
 ## Usage
 Project build is available at https://build.phonegap.com/apps/2346289/builds
+
 For local build, clone the repo (git clone https://github.com/jolet/tic-tac-toe.git) and run from command line
 
     phonegap app --port 8080
