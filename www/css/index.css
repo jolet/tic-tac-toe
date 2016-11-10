@@ -113,7 +113,8 @@ h1 {
 }
 
 #status_div {
-    display: none;
+    display: none;  
+    overflow:visible;
   height: 10%;
   width: 100%;
   position: fixed;
