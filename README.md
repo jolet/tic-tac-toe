@@ -17,6 +17,8 @@ Since the purpose of app is to test available system resources, app will ask for
 
 ![alt tag](https://raw.githubusercontent.com/jolet/tic-tac-toe/master/www/res/phonegap_tic_tac_toe_preview.png)
 
+![alt tag](https://raw.githubusercontent.com/jolet/tic-tac-toe/master/www/res/phonegap_tic_tac_toe_UI_info.png)
+
 ## Requested permissions
  When installing in android powered phone, application will ask for following permissions:
 
@@ -30,7 +32,7 @@ Since the purpose of app is to test available system resources, app will ask for
 
     ### Other
         - control vibration - for vibrate effect when tic tac toe game ends as tie
-        - view network connections - (cordova network plugin) - for showing network state change on screen
+        - view network connections - (cordova network/media plugin) - for showing network state change on screen
         - record audio, modify or delete the contents of your USB storage, read the contents of your USB storage - (cordova Media plugin) - not used in this app, 
         
 ## Notes
@@ -45,8 +47,7 @@ Since the purpose of app is to test available system resources, app will ask for
     - cool professor for not making me reinvent the wheel and letting me integrate instead
 
 ## Todo
-    - remove unnecessary permission requests
-    - add ios/windows builds to phonegap build
+    - split game logic in separate file
     - fix android not playing local mp3 sound effect
     - add 2 player online mod
     - add AI mod
