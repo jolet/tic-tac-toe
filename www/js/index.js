@@ -32,6 +32,8 @@
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
+    mediaSound: null,
+
     onDeviceReady: function() {
       app.receivedEvent('deviceready');
       var watchID = navigator.geolocation.watchPosition(geo.onSuccess, geo.onError, { timeout: 30000 });
@@ -39,6 +41,7 @@
       document.addEventListener("online", app.onOnline, false);
       document.addEventListener("offline", app.onOffline, false);
       app.changeStatusBar();
+      app.mediaSound = app.getSuccesMediaSound();
 
     },
 
@@ -57,21 +60,14 @@
 
     },
 
-    playMedia: function() {
-      var resourceUrl = '../res/success.mp3'
+    getSuccesMediaSound: function(media) {
+      var resourceUrl = '/res/success.mp3'
       if(navigator.platform != "Win32") {
-        //resourceUrl = "https://www.freesound.org/data/previews/162/162473_311243-lq.mp3"
+        resourceUrl = "https://www.freesound.org/data/previews/162/162473_311243-lq.mp3"
       } else {
-        //resourceUrl = "/res/success.mp3"
+        resourceUrl = "/res/success.mp3"
       } 
-      var myMediaUrl = new Media(resourceUrl, function(e){
-        console.log("on success",e)
-        app.showDialog("success", "media fetch success");
-      }, function(e) {
-        console.log("on error",e)
-        app.showDialog("error " + e[0], e.code + ' ' + e.message);
-      })
-      myMediaUrl.play();
+      return new Media(resourceUrl);
     },
 
     changeStatusBar: function() {
@@ -187,7 +183,8 @@
         app.vibrate(2000);
         resultMessage = "Result: Tie.";
       } else { 
-        app.playMedia(); 
+        console.log(app.mediaSound)
+        app.mediaSound.play();
         this.win == 'X' ? this.playerXWins++ : this.playerOWins++;
         $("#deviceready .event.received").html("[X vs 0] = " + this.playerXWins + " : " + this.playerOWins);
         resultMessage = "Player " + this.win + " wins!";
