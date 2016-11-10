@@ -32,8 +32,9 @@ Since the purpose of app is to test various system resources, app will ask for v
         - control vibration - for vibrate effect when tic tac toe game ends as tie
         
         
-
-#### PhoneGap CLI
-
-[phonegap-cli-url]: http://github.com/phonegap/phonegap-cli
+## Credits
+    - jQuery Tic Tac Toe code from ThingsILearned By Dave Fowler http://thingsilearned.com/2009/06/02/tictactoe-in-jquery/
+    - Phonegap hello world template from https://github.com/phonegap/phonegap-template-hello-world for quick start
+    - Phonegap CLI for making everything available from command line http://github.com/phonegap/phonegap-cli
+    - cool professor for not making me reinvent the wheel and letting me integrate instead
 
