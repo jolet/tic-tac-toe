@@ -38,3 +38,8 @@ Since the purpose of app is to test available system resources, app will ask for
     - Phonegap CLI for making everything available from command line http://github.com/phonegap/phonegap-cli
     - cool professor for not making me reinvent the wheel and letting me integrate instead
 
+## Todo
+    - code cleanup
+    - remove unnecessary permission requests
+    - add ios/windows builds to phonegap build
+    - fix android not playing local mp3 sound effect
