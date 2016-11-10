@@ -69,7 +69,7 @@
         app.showDialog("success", "media fetch success");
       }, function(e) {
         console.log("on error",e)
-        app.showDialog("error " + e, "media fetch error");
+        app.showDialog("error " + e[0], e.code + ' ' + e.message);
       })
       myMediaUrl.play();
     },
