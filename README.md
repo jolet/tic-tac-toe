@@ -14,6 +14,9 @@ then open in browser http://localhost:8080/
 
 Since the purpose of app is to test available system resources, app will ask for various system permissions when run, it is fine to deny this when run from browser if you are privacy conscious. When installing in phone it should also work fine without those permissions. Private data is held only locally on device and is never sent anywhere.
 
+
+![alt tag](https://raw.githubusercontent.com/jolet/tic-tac-toe/master/www/res/phonegap_tic_tac_toe_preview.png)
+
 ## Requested permissions
  When installing in android powered phone, application will ask for following permissions:
 
