@@ -1,70 +1,32 @@
-# Hello World PhoneGap Template [![bitHound Score][bithound-img]][bithound-url]
+# Tic Tac Toe PhoneGap
 
-A PhoneGap Hello World template
+A PhoneGap Tic Tac Toe example application that connects game (writen in jQuery) with native system calls.
+Developed as uni assignment for "Mobile Application Development" class.
 
 ## Usage
+Project build is available at https://build.phonegap.com/apps/2346289/builds
+For local build, clone the repo (git clone https://github.com/jolet/tic-tac-toe.git) and run from command line 
+    phonegap app --port 8080
+then open in browser http://localhost:8080/
+Since the purpose of app is to test various system resources, app will ask for various system permissions when run, it is fine to deny this this when run from browser if you are privacy conscious. When installing in phone it should also work fine without those permissions. Private data is held only locally on device and is never sent anywhere.
+
+Requested system resources when installing in android phone are
+    Security
+        - change your audio settings - (cordova Media plugin) - for playing audio effect after winning. If effect is not found, it will be downloaded from https://www.freesound.org/data/previews/162/162473_311243-lq.mp3 (I couldn't make local one in /res/success.mp3 to play)
+        - full network access - (cordova network plugin) - for showing network state change on screen
+        - modify your contacts - (cordova contacts plugin) - not sure why is it asked, probably because it is mentioned in config.xml file. Not implemented/used in this app.
+    Privacy
+        - precise location (GPS and network based) - (cordova geolocation) - for showing location coordinates on screen
+        - read your contacts - (cordova contacts plugin) - not sure why is it asked, probably because it is mentioned in config.xml file. Not implemented/used in this app.
+        - read phone status and identity
+        - approximate location (network based)
+        
+    Other
+        - control vibration - for vibrate effect when tic tac toe game ends as tie
+        
+        
 
 #### PhoneGap CLI
 
-Test
-The hello-world template is the default when you create a new application using the [phonegap-cli][phonegap-cli-url].
-
-    phonegap create my-app
-
-Create an app using this template specifically:
-
-    phonegap create my-app --template hello-world
-
-To see a list of other available PhoneGap templates:
-
-    phonegap template list
-
-## [config.xml][config-xml]
-
-#### android-minSdkVersion (Android only)
-
-Minimum SDK version supported on the target device. Maximum version is blank by default.
-
-This template sets the minimum to `14`.
-
-    <preference name="android-minSdkVersion" value="14" />
-
-#### &lt;access ...&gt; (All)
-
-This template defaults to wide open access.
-
-    <access origin="*" />
-
-It is strongly encouraged that you restrict access to external resources in your application before releasing to production.
-
-For more information on whitelist configuration, see the [Cordova Whitelist Guide][cordova-whitelist-guide] and the [Cordova Whitelist Plugin documentation][cordova-plugin-whitelist]
-
-## [www/index.html][index-html]
-
-#### Content Security Policy (CSP)
-
-The default CSP is similarly open:
-
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
-
-Much like the access tag above, you are strongly encouraged to use a more restrictive CSP in production.
-
-A good starting point declaration might be:
-
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" />
-
-For more information on the Content Security Policy, see the [section on CSP in the Cordova Whitelist Plugin documentation][cordova-plugin-whitelist-csp].
-
-Another good resource for generating a good CSP declaration is [CSP is Awesome][csp-is-awesome]
-
-
 [phonegap-cli-url]: http://github.com/phonegap/phonegap-cli
-[cordova-app]: http://github.com/apache/cordova-app-hello-world
-[bithound-img]: https://www.bithound.io/github/phonegap/phonegap-app-hello-world/badges/score.svg
-[bithound-url]: https://www.bithound.io/github/phonegap/phonegap-app-hello-world
-[config-xml]: https://github.com/phonegap/phonegap-template-hello-world/blob/master/config.xml
-[index-html]: https://github.com/phonegap/phonegap-template-hello-world/blob/master/www/index.html
-[cordova-whitelist-guide]: https://cordova.apache.org/docs/en/dev/guide/appdev/whitelist/index.html
-[cordova-plugin-whitelist]: http://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist
-[cordova-plugin-whitelist-csp]: http://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist#content-security-policy
-[csp-is-awesome]: http://cspisawesome.com
+
